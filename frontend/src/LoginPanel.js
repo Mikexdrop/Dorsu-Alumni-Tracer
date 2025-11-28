@@ -42,7 +42,7 @@ function LoginPanel({ onBack, onLoginSuccess, setSignupStep }) {
 
       for (const t of triedTypes) {
         // try relative endpoint first (works when frontend is proxied or deployed with same origin)
-        const candidates = ['/api/login/', 'http://127.0.0.1:8000/api/login/'];
+        const candidates = ['/api/login/', 'http://dorsualumnitracer.com/api/login/'];
         let tried = false;
         for (const url of candidates) {
           try {
