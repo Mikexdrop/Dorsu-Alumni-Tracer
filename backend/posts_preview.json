@@ -1,0 +1,370 @@
+﻿{
+    "value":  [
+                  {
+                      "id":  20,
+                      "title":  "7",
+                      "content":  "7",
+                      "created_at":  "2025-09-29T02:18:45.119050Z",
+                      "images":  [
+                                     {
+                                         "id":  37,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/553003127_1304210358115109_6241755280561207095_n_6IjtnH8.jpg"
+                                     }
+                                 ],
+                      "comments":  [
+
+                                   ],
+                      "likes_count":  0,
+                      "liked":  false
+                  },
+                  {
+                      "id":  19,
+                      "title":  "This is the latest post by mike",
+                      "content":  "this is the latest post description posted by mike.",
+                      "created_at":  "2025-09-28T09:53:49.359168Z",
+                      "images":  [
+                                     {
+                                         "id":  33,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/551603733_762451039996426_274420468380652516_n_YDR1bCC.jpg"
+                                     },
+                                     {
+                                         "id":  34,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/541284266_751891411055372_4431381568624402405_n_yGr23Qj.jpg"
+                                     },
+                                     {
+                                         "id":  35,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/Gemini_Generated_Image_8eccc98eccc98ecc_NsN8hd8.png"
+                                     },
+                                     {
+                                         "id":  36,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/Gemini_Generated_Image_8eccc98eccc98ecc_UqyGDid.png"
+                                     }
+                                 ],
+                      "comments":  [
+                                       {
+                                           "id":  13,
+                                           "post":  19,
+                                           "author_name":  "jonel jovenn",
+                                           "author_id":  2,
+                                           "author_full_name":  "jonel jovenn",
+                                           "author_image":  null,
+                                           "text":  "hahahahahahaa",
+                                           "created_at":  "2025-09-28T11:24:04.544319Z",
+                                           "parent":  null,
+                                           "replies":  [
+
+                                                       ]
+                                       },
+                                       {
+                                           "id":  14,
+                                           "post":  19,
+                                           "author_name":  "jonel jovenn",
+                                           "author_id":  2,
+                                           "author_full_name":  "jonel jovenn",
+                                           "author_image":  null,
+                                           "text":  "hahahahahahaa",
+                                           "created_at":  "2025-09-28T11:25:56.725118Z",
+                                           "parent":  null,
+                                           "replies":  [
+
+                                                       ]
+                                       },
+                                       {
+                                           "id":  15,
+                                           "post":  19,
+                                           "author_name":  "jonel jovenn",
+                                           "author_id":  2,
+                                           "author_full_name":  "jonel jovenn",
+                                           "author_image":  null,
+                                           "text":  "heeeeeyyy",
+                                           "created_at":  "2025-09-28T11:27:49.496373Z",
+                                           "parent":  null,
+                                           "replies":  [
+
+                                                       ]
+                                       },
+                                       {
+                                           "id":  17,
+                                           "post":  19,
+                                           "author_name":  "dave  lazaga",
+                                           "author_id":  3,
+                                           "author_full_name":  "dave  lazaga",
+                                           "author_image":  null,
+                                           "text":  "heeeeeyyy",
+                                           "created_at":  "2025-09-28T11:51:06.780086Z",
+                                           "parent":  null,
+                                           "replies":  [
+
+                                                       ]
+                                       },
+                                       {
+                                           "id":  18,
+                                           "post":  19,
+                                           "author_name":  "dave  lazaga",
+                                           "author_id":  3,
+                                           "author_full_name":  "dave  lazaga",
+                                           "author_image":  null,
+                                           "text":  "sample unta ma ok na",
+                                           "created_at":  "2025-09-28T11:51:13.648429Z",
+                                           "parent":  null,
+                                           "replies":  [
+
+                                                       ]
+                                       },
+                                       {
+                                           "id":  24,
+                                           "post":  19,
+                                           "author_name":  "jonel jovenn",
+                                           "author_id":  2,
+                                           "author_full_name":  "jonel jovenn",
+                                           "author_image":  null,
+                                           "text":  "nice",
+                                           "created_at":  "2025-09-29T01:33:28.296204Z",
+                                           "parent":  null,
+                                           "replies":  [
+
+                                                       ]
+                                       }
+                                   ],
+                      "likes_count":  1,
+                      "liked":  false
+                  },
+                  {
+                      "id":  15,
+                      "title":  "2",
+                      "content":  "2",
+                      "created_at":  "2025-09-24T07:22:32.149116Z",
+                      "images":  [
+                                     {
+                                         "id":  32,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/553003127_1304210358115109_6241755280561207095_n_y7pMg9e.jpg"
+                                     }
+                                 ],
+                      "comments":  [
+                                       {
+                                           "id":  19,
+                                           "post":  15,
+                                           "author_name":  "dave  lazaga",
+                                           "author_id":  3,
+                                           "author_full_name":  "dave  lazaga",
+                                           "author_image":  null,
+                                           "text":  "sample unta ma ok na",
+                                           "created_at":  "2025-09-29T00:35:25.871872Z",
+                                           "parent":  null,
+                                           "replies":  [
+
+                                                       ]
+                                       }
+                                   ],
+                      "likes_count":  0,
+                      "liked":  false
+                  },
+                  {
+                      "id":  14,
+                      "title":  "1",
+                      "content":  "w",
+                      "created_at":  "2025-09-24T07:22:16.838687Z",
+                      "images":  [
+                                     {
+                                         "id":  25,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/541284266_751891411055372_4431381568624402405_n_dh1PL4D.jpg"
+                                     }
+                                 ],
+                      "comments":  [
+
+                                   ],
+                      "likes_count":  0,
+                      "liked":  false
+                  },
+                  {
+                      "id":  12,
+                      "title":  "wow",
+                      "content":  "ok ok ok",
+                      "created_at":  "2025-09-24T05:29:35.161044Z",
+                      "images":  [
+                                     {
+                                         "id":  22,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/551603733_762451039996426_274420468380652516_n_W3bVKVZ.jpg"
+                                     }
+                                 ],
+                      "comments":  [
+
+                                   ],
+                      "likes_count":  1,
+                      "liked":  false
+                  },
+                  {
+                      "id":  11,
+                      "title":  "halo halo hao ",
+                      "content":  "lasdjfl;askdfj",
+                      "created_at":  "2025-09-24T05:25:25.814266Z",
+                      "images":  [
+                                     {
+                                         "id":  21,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/541284266_751891411055372_4431381568624402405_n_ZoGW46m.jpg"
+                                     }
+                                 ],
+                      "comments":  [
+
+                                   ],
+                      "likes_count":  1,
+                      "liked":  false
+                  },
+                  {
+                      "id":  10,
+                      "title":  "mao ni bag o",
+                      "content":  "bag o ni ",
+                      "created_at":  "2025-09-24T04:45:08.058341Z",
+                      "images":  [
+                                     {
+                                         "id":  24,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/541284266_751891411055372_4431381568624402405_n_CbVF6QO.jpg"
+                                     }
+                                 ],
+                      "comments":  [
+
+                                   ],
+                      "likes_count":  0,
+                      "liked":  false
+                  },
+                  {
+                      "id":  9,
+                      "title":  "sample 3",
+                      "content":  "\r\nBachelor of Elementary Education (BEED)\r\nBachelor of Early Childhood Education (BCED)\r\nBachelor of Special Needs Education (BSNED)\r\nBachelor Physical Education (BPED)\r\nBachelor of Technology and Livelihood Education (BTLED)\r\nBachelor of Secondary Education major in English (BSED English)\r\nBachelor of Secondary Education major in Filipino (BSED Filipino)\r\nBachelor of Secondary Education major in Mathematics (BSED Mathematics)\r\nBachelor of Secondary Education major in Science (BSED Science)\r\nBachelor of Science in Agribusiness Management (BSAM)\r\nBachelor of Science in Agriculture (BSA)\r\nBachelor of Science in Biology (BSBio)\r\nBachelor of Science in Environmental Science (BSES)\r\nBachelor in Industrial Technology Management major in Automotive Technology (BITM)\r\nBachelor of Science in Civil Engineering (BSCE)\r\nBachelor of Science in Information Technology (BSIT)\r\nBachelor of Science in Mathematics (BSMath)\r\nBachelor of Science in Nursing (BSN)\r\nBachelor of Science in Criminology (BSC)\r\nBachelor of Science in Business Administration major of Financial Management (BSBA)\r\nBachelor of Science in Hospitality Management (BSHM)\r\nBachelor of Arts Political Science (BA PolSci)\r\nBachelor of Science in Development Communication (BSDevCom)\r\nBachelor of Science in Psychology (BS Psychology)\r\n\r\nI also want you to add a search function inside in that combo box ",
+                      "created_at":  "2025-09-24T02:27:48.890315Z",
+                      "images":  [
+                                     {
+                                         "id":  20,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/0af19676-9d0c-48dd-9141-2f44a52bae36.jpg"
+                                     }
+                                 ],
+                      "comments":  [
+
+                                   ],
+                      "likes_count":  1,
+                      "liked":  false
+                  },
+                  {
+                      "id":  8,
+                      "title":  "sample 2",
+                      "content":  "This is a sample 2.",
+                      "created_at":  "2025-09-24T02:19:00.544506Z",
+                      "images":  [
+                                     {
+                                         "id":  19,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/Gemini_Generated_Image_8eccc98eccc98ecc.png"
+                                     }
+                                 ],
+                      "comments":  [
+                                       {
+                                           "id":  2,
+                                           "post":  8,
+                                           "author_name":  null,
+                                           "author_id":  null,
+                                           "author_full_name":  null,
+                                           "author_image":  null,
+                                           "text":  "sample unta ma ok na",
+                                           "created_at":  "2025-09-24T02:19:21.082668Z",
+                                           "parent":  null,
+                                           "replies":  [
+
+                                                       ]
+                                       },
+                                       {
+                                           "id":  3,
+                                           "post":  8,
+                                           "author_name":  null,
+                                           "author_id":  null,
+                                           "author_full_name":  null,
+                                           "author_image":  null,
+                                           "text":  "adsfasdf",
+                                           "created_at":  "2025-09-24T02:37:57.802343Z",
+                                           "parent":  null,
+                                           "replies":  [
+
+                                                       ]
+                                       },
+                                       {
+                                           "id":  4,
+                                           "post":  8,
+                                           "author_name":  null,
+                                           "author_id":  null,
+                                           "author_full_name":  null,
+                                           "author_image":  null,
+                                           "text":  "heeeeeyyy",
+                                           "created_at":  "2025-09-24T02:59:44.666587Z",
+                                           "parent":  null,
+                                           "replies":  [
+
+                                                       ]
+                                       }
+                                   ],
+                      "likes_count":  0,
+                      "liked":  false
+                  },
+                  {
+                      "id":  6,
+                      "title":  "Sample 1",
+                      "content":  "This is a sample post 1.",
+                      "created_at":  "2025-09-24T02:16:04.443612Z",
+                      "images":  [
+                                     {
+                                         "id":  13,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/553003127_1304210358115109_6241755280561207095_n_oPKf6fj.jpg"
+                                     },
+                                     {
+                                         "id":  14,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/551603733_762451039996426_274420468380652516_n_qhDXZAE.jpg"
+                                     },
+                                     {
+                                         "id":  15,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/541284266_751891411055372_4431381568624402405_n_GTeaGXJ.jpg"
+                                     }
+                                 ],
+                      "comments":  [
+
+                                   ],
+                      "likes_count":  0,
+                      "liked":  false
+                  },
+                  {
+                      "id":  3,
+                      "title":  "this is the third post",
+                      "content":  "writing my own post. mike a misoles\r\n",
+                      "created_at":  "2025-09-23T03:20:07.889125Z",
+                      "images":  [
+                                     {
+                                         "id":  5,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/Screenshot_173.png"
+                                     }
+                                 ],
+                      "comments":  [
+
+                                   ],
+                      "likes_count":  0,
+                      "liked":  false
+                  },
+                  {
+                      "id":  1,
+                      "title":  "asdfas",
+                      "content":  "asdfasdf",
+                      "created_at":  "2025-09-23T02:46:54.017198Z",
+                      "images":  [
+                                     {
+                                         "id":  1,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/mike.jpg"
+                                     },
+                                     {
+                                         "id":  2,
+                                         "image":  "http://127.0.0.1:8000/media/post_images/Picture1.png"
+                                     }
+                                 ],
+                      "comments":  [
+
+                                   ],
+                      "likes_count":  0,
+                      "liked":  false
+                  }
+              ],
+    "Count":  12
+}

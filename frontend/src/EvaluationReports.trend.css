@@ -1,0 +1,73 @@
+:root{
+  --card-bg:#ffffff;
+  --card-radius:12px;
+  --card-padding:18px;
+  --card-shadow: 0 6px 18px rgba(16,24,40,0.08);
+  --muted:#6b7280;
+  --primary:#2563eb;
+}
+
+.er-trend-card{
+  margin-top:16px;
+  background:var(--card-bg);
+  padding:var(--card-padding);
+  border-radius:var(--card-radius);
+  box-shadow:var(--card-shadow);
+  border:1px solid rgba(15,23,42,0.03);
+}
+
+.er-trend-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.er-trend-header strong{
+  font-size:16px;
+}
+
+.er-trend-body{
+  display:block;
+}
+
+.er-trend-chart{
+  height:260px; /* default chart height */
+  max-height:420px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9));
+  padding:12px;
+  border-radius:10px;
+  border:1px solid rgba(15,23,42,0.03);
+}
+
+.er-trend-summary{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.er-trend-no-data, .er-trend-loading{
+  color:var(--muted);
+  padding:24px 8px;
+  text-align:center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px){
+  .er-trend-chart{ height:200px; }
+}
+@media (max-width: 600px){
+  .er-trend-chart{ height:160px; }
+  .er-trend-header strong{ font-size:14px; }
+}
+
+/* make the outline primary button visually consistent in the header */
+.er-trend-header .btn-outline{
+  border-color: rgba(37,99,235,0.18);
+  color: var(--primary);
+}
+
+.er-trend-header .btn-outline:disabled{
+  opacity:0.6;
+}

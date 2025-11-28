@@ -1,0 +1,399 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* Button styles for create/cancel in forms */
+.btn-create {
+  transition: transform 160ms cubic-bezier(.2,.8,.2,1), box-shadow 160ms ease, background-color 160ms ease;
+  will-change: transform;
+}
+.btn-create:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(16,185,129,0.18);
+}
+.btn-create:active:not(:disabled) {
+  transform: translateY(-1px) scale(0.995);
+  box-shadow: 0 6px 18px rgba(16,185,129,0.14);
+}
+
+.btn-cancel {
+  transition: transform 140ms cubic-bezier(.2,.8,.2,1), background-color 140ms ease, color 140ms ease;
+}
+.btn-cancel:hover {
+  transform: translateY(-2px);
+  background-color: #eef2f6;
+}
+.btn-cancel:active {
+  transform: translateY(0);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Shared button system used across the app */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 160ms cubic-bezier(.2,.8,.2,1), box-shadow 160ms ease, background-color 140ms ease, color 140ms ease;
+  will-change: transform;
+  border: none;
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.btn:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.01);
+}
+.btn:active:not(:disabled) {
+  transform: translateY(-1px) scale(0.995);
+}
+.btn:focus {
+  outline: 3px solid rgba(59,130,246,0.18);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg,#06b6d4,#0ea5e9);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(14,165,233,0.12);
+}
+.btn-danger {
+  background: linear-gradient(180deg,#f97316,#ef4444);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(239,68,68,0.12);
+}
+.btn-outline {
+  background: #fff;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+}
+
+/* Global responsive utilities and baseline styles */
+:root {
+  --space-xs: 6px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --container-max: 1200px;
+  --radius: 10px;
+  --muted: rgba(0,0,0,0.54);
+  --debounce-ms: 350;
+  --spinner-size: 16px;
+  --accent: #0ea5e9; /* cyan */
+  --accent-weak: rgba(14,165,233,0.08);
+  /* Claim input sizing tokens */
+  --claim-input-padding: 10px;
+  --claim-input-icon-size: 20px;
+  --claim-input-gap: 8px;
+  --claim-input-field-padding: 10px;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #0f172a;
+}
+
+/* Responsive container used across pages */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 18px;
+  box-sizing: border-box;
+}
+
+/* Images and media scale nicely */
+img, picture, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Cards / panels baseline */
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 28px rgba(2,6,23,0.06);
+  padding: var(--space-md);
+  box-sizing: border-box;
+}
+.card--glass {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.04);
+  backdrop-filter: blur(6px);
+}
+
+/* Headings scale down on mobile for neat layout */
+h1 { font-size: 1.9rem; line-height: 1.08; margin: 0 0 12px; }
+h2 { font-size: 1.35rem; margin: 0 0 10px; }
+h3 { font-size: 1.05rem; margin: 0 0 8px; }
+
+/* Forms and inputs full-width on small screens */
+input, textarea, select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e6eef8;
+}
+
+/* Buttons become block-level on small screens for easier tapping */
+.btn { min-height: 40px; }
+@media (max-width: 480px) {
+  .btn { width: 100%; padding: 12px 14px; font-size: 15px; }
+}
+
+/* Utility helpers */
+.muted { color: var(--muted); }
+.center { text-align: center; }
+.row { display:flex; gap:12px; align-items:center; }
+.col { display:flex; flex-direction:column; gap:12px; }
+
+/* Smaller typography on very small devices */
+@media (max-width: 900px) {
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.15rem; }
+}
+@media (max-width: 480px) {
+  :root { --space-md: 14px; }
+  body { font-size: 15px; }
+  h1 { font-size: 1.35rem; }
+  h2 { font-size: 1.05rem; }
+  .container { padding: 0 12px; }
+  .card { padding: 12px; border-radius: 12px; }
+  /* Reduce large shadows for better battery and readability */
+  .card, .btn-primary, .btn-danger { box-shadow: 0 8px 20px rgba(2,6,23,0.06); }
+}
+
+/* Accessibility: slightly larger tap targets on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .btn { min-height: 44px; }
+}
+
+/* Toast / overlay responsive styles */
+.toast-root {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+.toast-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: 0 8px 28px rgba(2,6,23,0.12);
+  min-width: 220px;
+  max-width: 420px;
+  box-sizing: border-box;
+}
+@media (max-width: 640px) {
+  .toast-root { left: 12px; right: 12px; top: 12px; align-items: center; }
+  .toast-item { width: 100%; min-width: auto; max-width: 100%; }
+}
+
+/* Generic modal/dialog overlay helper (used by other components) */
+.overlay-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 12000; display:flex; align-items:center; justify-content:center; padding: 12px; box-sizing: border-box;
+}
+.overlay-panel {
+  background: #fff; border-radius: 12px; max-width: 920px; width: 100%; box-sizing: border-box; padding: 20px; box-shadow: 0 16px 60px rgba(2,6,23,0.36);
+}
+@media (max-width: 640px) {
+  .overlay-panel { max-width: 560px; padding: 14px; border-radius: 10px; }
+}
+
+/* Global reduced-motion handling: avoid animations/transitions for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  /* Disable animations and transitions for toasts and overlays */
+  .toast-root, .toast-item, .overlay-backdrop, .overlay-panel, .alumni-mobile-panel, .alumni-mobile-panel *, .content-card, .content-card.entered {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Remove transforms that can cause motion */
+  .toast-item, .overlay-panel, .alumni-mobile-panel { transform: none !important; }
+
+  /* Ensure content cards are static */
+  .content-card { opacity: 1 !important; transform: none !important; }
+
+  /* Reduce button hover motion on reduced-motion preference */
+  .btn, .btn-create, .btn-cancel { transition: none !important; }
+}
+
+/* Global spinner animation used by small inline SVG spinners */
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* small inline spinner used throughout the UI */
+.inline-spinner {
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  border-radius: 999px;
+  border: 2px solid rgba(0,0,0,0.08);
+  border-top-color: rgba(0,0,0,0.6);
+  animation: spin 900ms linear infinite;
+}
+
+/* ClaimAccount create form styles */
+.claim-create-header {
+  background: linear-gradient(90deg, var(--accent-weak), rgba(6,182,212,0.02));
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.claim-input {
+  padding: var(--claim-input-padding);
+  border-radius: 8px;
+  border: 1px solid #e6eef8;
+  transition: box-shadow 120ms ease, border-color 120ms ease;
+  display: flex;
+  align-items: center;
+  gap: var(--claim-input-gap);
+}
+/* Use focus-within so keyboard focus on the input highlights the container */
+.claim-input:focus-within {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(14,165,233,0.12);
+}
+.claim-input-icon svg { color: #6b7280; width: var(--claim-input-icon-size); height: var(--claim-input-icon-size); }
+/* Make the input itself visually simple inside the .claim-input wrapper */
+.claim-input-field {
+  padding: var(--claim-input-field-padding);
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+}
+/* Align the muted hint under the input text (start after icon + gaps + paddings) */
+.claim-input + .muted {
+  margin-left: calc(var(--claim-input-padding) + var(--claim-input-icon-size) + var(--claim-input-gap) + var(--claim-input-field-padding));
+  margin-top: 6px;
+}
+
+/* Eye toggle button inside inputs */
+.eye-button {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #6b7280;
+  border-radius: 6px;
+}
+.eye-button:focus {
+  outline: 2px solid rgba(14,165,233,0.18);
+  outline-offset: 2px;
+}
+.eye-button svg { display: block; }
+
+/* subtle hover/focus scale for the eye icon */
+.eye-button { transition: transform 140ms cubic-bezier(.2,.8,.2,1), color 120ms ease; }
+.eye-button:hover { transform: scale(1.08); color: var(--accent); }
+.eye-button:active { transform: scale(0.98); }
+
+/* Validation icon to the right of inputs */
+.validation-icon {
+  width: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-left: 8px;
+  color: #6b7280;
+}
+.validation-icon:empty { visibility: hidden; }
+.validation-icon[aria-hidden="true"] { pointer-events: none; }
+
+
+/* Overlay enter: subtle fade + slide */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(-6px) scale(.995); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeSlideOut {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(-6px) scale(.995); }
+}
+
+.fade-slide-enter {
+  animation: fadeSlideIn 220ms cubic-bezier(.2,.9,.2,1) both;
+}
+
+.fade-slide-exit {
+  animation: fadeSlideOut 160ms ease both;
+}
+
+/* success pop animation */
+@keyframes successPop {
+  0% { transform: scale(.6); opacity: 0; }
+  60% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.success-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #E6FFEF;
+  border: 1px solid #CFF5D6;
+  color: #0A6E3A;
+  border-radius: 20px;
+  font-weight: 700;
+  animation: successPop 420ms cubic-bezier(.2,.9,.2,1) both;
+}
+
+
+

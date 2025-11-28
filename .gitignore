@@ -1,0 +1,11 @@
+# Python virtual environment
+frontend/root/backend/venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Database
+*.sqlite3
+
+# Node modules
+frontend/node_modules/

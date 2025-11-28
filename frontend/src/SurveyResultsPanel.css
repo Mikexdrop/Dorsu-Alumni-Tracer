@@ -1,0 +1,80 @@
+/* Modern, professional layout for survey results */
+.srp-container{
+  padding:22px;
+  max-width:1400px;
+  margin:18px auto;
+  font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg, #f5f8ff 0%, #eef6ff 100%);
+  border-radius:14px;
+  box-shadow: 0 10px 30px rgba(16,24,40,0.06);
+}
+.srp-title{font-size:1.6rem;margin-bottom:8px;color:#0f172a;font-weight:700}
+.srp-subtle{color:#475569;font-size:0.95rem}
+
+.srp-header-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.srp-count{color:#0f172a;font-weight:600}
+
+.srp-download-btn, .srp-reset-btn{
+  background: #ffffff;
+  border: 1px solid rgba(15,23,42,0.06);
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  color:#0f172a;
+  font-weight:600;
+  box-shadow: 0 4px 12px rgba(2,6,23,0.04);
+}
+.srp-download-btn:hover, .srp-reset-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+
+/* Filters */
+.srp-filters{margin-bottom:14px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.srp-filter-label{color:#334155;font-weight:600;font-size:0.92rem}
+.srp-filter{position:relative}
+.srp-filter--year{min-width:90px;max-width:110px}
+.srp-filter--program{min-width:220px}
+.srp-input{width:100%;padding:8px;border-radius:10px;border:1px solid rgba(15,23,42,0.06);font-size:0.95rem;background:#ffffff}
+.srp-input--year{padding:6px 8px}
+.srp-input--program{padding:6px 10px}
+
+.srp-listbox{position:absolute;left:0;right:0;top:calc(100% + 6px);background:#fff;border:1px solid rgba(15,23,42,0.04);border-radius:8px;max-height:220px;overflow:auto;z-index:200;box-shadow:0 8px 18px rgba(2,6,23,0.06)}
+.srp-option{padding:8px;cursor:pointer;font-size:0.95rem}
+.srp-option[aria-selected="true"]{background:#eef2ff}
+.srp-option:focus{outline:none;background:#f8fafc}
+
+/* Grid & Cards: responsive, clean cards with white background */
+.srp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:12px;align-items:start}
+.srp-card{background:#ffffff;border-radius:12px;padding:14px;box-shadow:0 8px 20px rgba(2,6,23,0.04);grid-column:span 1;border:1px solid rgba(15,23,42,0.03)}
+.srp-card--full{grid-column:span 2}
+.srp-chart{height:220px;position:relative;padding:6px;background:linear-gradient(180deg, #ffffff, #fbfdff);border-radius:10px}
+.srp-chart--large{height:320px}
+.srp-card h3{margin-bottom:10px;color:#0f172a;font-size:1rem}
+
+/* Small subtle title under cards */
+.srp-card .srp-card-sub{color:#667085;font-size:0.9rem;margin-top:6px}
+
+/* Analysis area (if present) */
+.srp-analysis-card{margin-top:16px;color:#0f172a}
+.srp-analysis{color:#0f172a}
+.srp-analysis-loading{color:#0f172a}
+.srp-analysis-columns{display:flex;gap:16px;flex-wrap:wrap}
+.srp-analysis-col{flex:1 1 320px;min-width:280px}
+.srp-analysis-col--center{flex:0 1 360px;min-width:300px}
+.srp-analysis-col--right{flex:0 1 260px;min-width:220px}
+.srp-trend-chart{height:260px;margin-top:6px}
+.srp-analysis ul{padding-left:18px;margin:6px 0}
+.srp-analysis li{color:#0f172a;margin-bottom:6px}
+.srp-analysis strong{color:#0f172a;display:block}
+
+/* Responsive */
+@media (max-width:1000px){
+  .srp-grid{grid-template-columns:repeat(2,1fr)}
+  .srp-card{grid-column:span 1}
+  .srp-card--full{grid-column:span 2}
+}
+@media (max-width:640px){
+  .srp-grid{grid-template-columns:repeat(1,1fr)}
+  .srp-card{grid-column:span 1;padding:12px}
+  .srp-grid{gap:12px}
+  .srp-input{font-size:0.95rem}
+  .srp-chart{height:200px}
+}
