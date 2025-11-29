@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,12 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!vz#pw1+1ajwr7@@)h^5ld(&nop!bk@og4h_3djr485z&&k7k='
+SECRET_KEY = '4s+6v4xbuw^fy(=2+g!k6g1t+k5yvaszv$ydwd_f&1qn2as538'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["dorsualumnitracer.com", "www.dorsualumnitracer.com", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = [
+    'mikemisoles74.pythonanywhere.com',
+    'www.mikemisoles74.pythonanywhere.com',
+]
 
 
 # Application definition
@@ -81,11 +85,15 @@ WSGI_APPLICATION = 'alumni_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'alumni_dbs',          # <- this must be alumni_dbs
-        'USER': 'alumni_user',
-        'PASSWORD': 'Mikemisoles74@',
-        'HOST': 'localhost',           # or '127.0.0.1'
+        'NAME': 'mikemisoles74$alumni_dbs',
+        'USER': 'mikemisoles74',
+        'PASSWORD': 'your-mysql-password',  # Replace with your actual MySQL password
+        'HOST': 'mikemisoles74.mysql.pythonanywhere-services.com',
         'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'charset': 'utf8mb4',
+        },
     }
 }
 # Password validation
@@ -122,7 +130,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Media files (for uploaded profile images)
 MEDIA_URL = '/media/'
@@ -134,7 +143,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS settings
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://mikemisoles74.pythonanywhere.com",
+]
 
 # Django REST Framework configuration: enable token auth so frontend-sent
 # "Authorization: Token <token>" headers authenticate request.user correctly.
