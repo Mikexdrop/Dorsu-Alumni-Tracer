@@ -15,10 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from django.views.static import serve
 from django.http import JsonResponse
 
 def home(request):
@@ -34,9 +35,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('users.urls')),
     path('api/', include('posts.urls')),
+    # Serve root-level static files (images, etc.) before React app
+    re_path(r'^(?P<path>logo_hanap\.jpg|picture_\d\.jpg|.*\.(jpg|png|svg|ico|mp4))$', 
+            serve, {'document_root': settings.STATIC_ROOT}),
     # Serve React app for all other routes
     path('', TemplateView.as_view(template_name='index.html')),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
