@@ -35,8 +35,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('users.urls')),
     path('api/', include('posts.urls')),
-    # Serve root-level static files (images, etc.) before React app
-    re_path(r'^(?P<path>logo_hanap\.jpg|picture_\d\.jpg|.*\.(jpg|png|svg|ico|mp4))$', 
+    # Serve root-level static files (images, videos, etc.) before React app
+    # This serves files like /logo_hanap.jpg, /picture_1.jpg, etc.
+    re_path(r'^(?P<path>[^/]+\.(jpg|jpeg|png|gif|svg|ico|webp|mp4|webm))$', 
             serve, {'document_root': settings.STATIC_ROOT}),
     # Serve React app for all other routes
     path('', TemplateView.as_view(template_name='index.html')),
