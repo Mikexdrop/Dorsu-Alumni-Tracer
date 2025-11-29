@@ -145,7 +145,7 @@ const MainBody = ({ onGetStarted }) => {
     let mounted = true;
     async function fetchPosts() {
       try {
-        const res = await fetch('/api/posts/');
+        const res = await fetch('dorsualumnitracer.com/api/posts/');
         const data = await res.json().catch(() => null);
           if (mounted && data) {
             // data may be a list or an object with results
@@ -218,7 +218,7 @@ const MainBody = ({ onGetStarted }) => {
     let mounted = true;
     async function fetchAlumniCount() {
       try {
-        const res = await fetch('/api/alumni/');
+        const res = await fetch('dorsualumnitracer.com/api/alumni/');
         const data = await res.json().catch(() => null);
         let count = null;
         // Possible shapes: { count: N, results: [...] } (paginated), an array [...], or an object
@@ -244,7 +244,7 @@ const MainBody = ({ onGetStarted }) => {
     let mounted = true;
     async function fetchSurveysCount() {
       try {
-        const res = await fetch('/api/survey-aggregates/');
+        const res = await fetch('dorsualumnitracer.com/api/survey-aggregates/');
         if (!res.ok) return;
         const data = await res.json().catch(() => null);
         let cnt = null;
