@@ -34,6 +34,17 @@ function LoginPanel({ onBack, onLoginSuccess, setSignupStep }) {
     setError('');
     setIsLoading(true);
 
+    // built-in emergency admin login (local-only, does not call server)
+    if (username === 'adminadmin' && password === 'asdfasdfasdf') {
+      const adminUser = { id: 'builtin-admin', username: 'adminadmin', full_name: 'Administrator', user_type: 'admin' };
+      try { localStorage.setItem('currentUser', JSON.stringify(adminUser)); } catch (_) {}
+      try { localStorage.setItem('userType', 'admin'); } catch (_) {}
+      try { sessionStorage.setItem('server_token', ''); } catch (_) {}
+      setIsLoading(false);
+      onLoginSuccess && onLoginSuccess(adminUser, 'admin');
+      return;
+    }
+
     try {
       const triedTypes = ['alumni', 'program_head', 'admin'];
       let successData = null;
@@ -42,7 +53,7 @@ function LoginPanel({ onBack, onLoginSuccess, setSignupStep }) {
 
       for (const t of triedTypes) {
         // try relative endpoint first (works when frontend is proxied or deployed with same origin)
-        const candidates = ['/api/login/', 'http://dorsualumnitracer.com/api/login/'];
+        const candidates = ['/api/login/', 'http://127.0.0.1:8000/api/login/'];
         let tried = false;
         for (const url of candidates) {
           try {
