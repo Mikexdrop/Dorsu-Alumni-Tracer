@@ -158,7 +158,7 @@ const Contact = () => {
         <div className="contact-title">Feedback</div>
         <div className="contact-desc">
          Do you have a feedback about the system?<br />
-        
+      
         </div>
         <div className="contact-info" style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
           <div className="contact-grid">
