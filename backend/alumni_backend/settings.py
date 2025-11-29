@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'alumni_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'alumni_dbs',
+        'NAME': 'alumni_dbs',          # <- this must be alumni_dbs
         'USER': 'alumni_user',
         'PASSWORD': 'Mikemisoles74@',
-        'HOST': 'localhost',
+        'HOST': 'localhost',           # or '127.0.0.1'
         'PORT': '3306',
     }
 }
