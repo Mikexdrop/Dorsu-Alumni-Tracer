@@ -18,12 +18,22 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.http import JsonResponse
+
+def home(request):
+    return JsonResponse({
+        'message': 'Dorsu Alumni Tracer API',
+        'endpoints': {
+            'admin': '/admin/',
+            'api': '/api/',
+        }
+    })
 
 urlpatterns = [
+    path('', home, name='home'),
     path('admin/', admin.site.urls),
     path('api/', include('users.urls')),
     path('api/', include('posts.urls')),
-    path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
