@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { openSurveyExportWindow } from './SurveyExport';
+// export/print helper removed — no longer needed
 import { useNavigate } from 'react-router-dom';
 import { useToast } from './Toast';
 
@@ -64,6 +64,7 @@ const initialFormState = {
   improvementSuggestions: '',
   hasBeenPromoted: '',
   workPerformanceRating: '',
+  hasOwnBusiness: '',
   selfEmployment: {
     businessName: '',
     natureOfBusiness: '',
@@ -85,6 +86,14 @@ function AlumniSurveysPanel() {
   const [existingSurvey, setExistingSurvey] = useState(null);
   const [editingExisting, setEditingExisting] = useState(false);
   const [showCancelConfirm, setShowCancelConfirm] = useState(false);
+  const [showSubmittedModal, setShowSubmittedModal] = useState(false);
+  const redirectTimerRef = React.useRef(null);
+  // Clean up redirect timer when component unmounts
+  React.useEffect(() => {
+    return () => {
+      try { if (redirectTimerRef.current) clearTimeout(redirectTimerRef.current); } catch(_){}
+    };
+  }, []);
   // Local toast for this panel (keeps consistent notifications if global toast not mounted)
   const { show } = useToast();
   const showToast = useCallback((type, message, timeout = 3200) => {
@@ -189,19 +198,8 @@ function AlumniSurveysPanel() {
       improvement_suggestions: formData.improvementSuggestions,
       has_been_promoted: formData.hasBeenPromoted,
       work_performance_rating: formData.workPerformanceRating,
-      ...((() => {
-        const se = formData.selfEmployment || {};
-        const hasValue = Object.values(se).some(v => v !== '' && v !== null && v !== undefined);
-        // Backend now expects an array of self_employment records (many=True)
-        return hasValue ? { self_employment: [{
-          business_name: se.businessName,
-          nature_of_business: se.natureOfBusiness,
-          role_in_business: se.roleInBusiness,
-          monthly_profit: se.monthlyProfit,
-          business_address: se.businessAddress,
-          business_phone: se.businessPhone
-        }]} : {};
-      })()),
+      // indicate whether the respondent has their own business
+      has_own_business: (formData.hasOwnBusiness === 'yes'),
     };
 
     try {
@@ -243,6 +241,15 @@ function AlumniSurveysPanel() {
             setExistingSurvey(result);
             setAlreadySubmitted(true);
           }
+          // Show a confirmation modal and redirect back to /Dashboard after a short delay
+          try {
+            setShowSubmittedModal(true);
+            // clear any previous timer
+            if (redirectTimerRef.current) clearTimeout(redirectTimerRef.current);
+            redirectTimerRef.current = setTimeout(() => {
+              try { navigate('/Dashboard'); } catch (e) { try { window.location.href = '/Dashboard'; } catch(_){} }
+            }, 2200);
+          } catch (_) {}
         }
       } else {
         let bodyText = '';
@@ -306,14 +313,18 @@ function AlumniSurveysPanel() {
       improvementSuggestions: s.improvement_suggestions || '',
       hasBeenPromoted: s.has_been_promoted || '',
       workPerformanceRating: s.work_performance_rating || '',
-      selfEmployment: (Array.isArray(s.self_employment) && s.self_employment.length > 0) ? {
+      // map legacy self_employment into simple yes/no flag
+      selfEmployment: (Array.isArray(s.self_employment) && s.self_employment.length > 0) ? ({
         businessName: s.self_employment[0].business_name || '',
         natureOfBusiness: s.self_employment[0].nature_of_business || '',
         roleInBusiness: s.self_employment[0].role_in_business || '',
         monthlyProfit: s.self_employment[0].monthly_profit || '',
         businessAddress: s.self_employment[0].business_address || '',
         businessPhone: s.self_employment[0].business_phone || ''
-      } : { ...initialFormState.selfEmployment }
+      }) : {
+        businessName: '', natureOfBusiness: '', roleInBusiness: '', monthlyProfit: '', businessAddress: '', businessPhone: ''
+      },
+      hasOwnBusiness: (Array.isArray(s.self_employment) && s.self_employment.length > 0) ? 'yes' : 'no'
     };
   };
 
@@ -517,24 +528,15 @@ function AlumniSurveysPanel() {
             ) : null}
           </div>
   </div>
-  <div className="no-print" style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', marginTop: 12 }}>
+          <div className="no-print" style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', marginTop: 12 }}>
           <button type="button" className="btn btn-outline" onClick={() => {
             try { navigate('/'); } catch (e) { window.location.href = '/'; }
           }}>Back</button>
-          <button type="button" className="btn btn-outline" onClick={() => {
-            try {
-              const html = document.querySelector('.survey-container').innerHTML;
-              openSurveyExportWindow({ existingSurvey, html, showToast });
-            } catch (err) {
-              console.error('Export failed', err);
-              try { showToast('error','Export failed'); } catch(_){ }
-            }
-          }}>Export / Print</button>
           <button type="button" className="btn btn-primary" onClick={() => {
             // switch to edit mode: prefill form, show toast confirmation, and scroll to form
             setFormData(mapSurveyToForm(existingSurvey));
             setEditingExisting(true);
-            try { showToast('info', 'You are now editing your submitted survey', 2500); } catch(_){}
+            try { showToast('info', 'You are now editing your submitted survey', 2500); } catch(_){ }
             window.scrollTo && window.scrollTo({ top: 0, behavior: 'smooth' });
           }}>Edit survey</button>
         </div>
@@ -918,78 +920,14 @@ function AlumniSurveysPanel() {
             </div>
           </div>
 
-          {/* Self Employment Section (separate card) */}
-          <div className="self-employment-card">
-            <h3 className="survey-title" style={{ fontSize: '1.2rem', marginBottom: '16px' }}>In case of Self-Employment; please answer the following;</h3>
-
-            <div className="self-employment-grid">
-              <div>
-                <label className="form-label">Name of the Business</label>
-                <input className="form-input" type="text" value={formData.selfEmployment.businessName} onChange={(e) => setFormData(prev => ({
-                  ...prev,
-                  selfEmployment: {
-                    ...prev.selfEmployment,
-                    businessName: e.target.value
-                  }
-                }))} />
-              </div>
-
-              <div>
-                <label className="form-label">Nature of the Business</label>
-                <input className="form-input" type="text" value={formData.selfEmployment.natureOfBusiness} onChange={(e) => setFormData(prev => ({
-                  ...prev,
-                  selfEmployment: {
-                    ...prev.selfEmployment,
-                    natureOfBusiness: e.target.value
-                  }
-                }))} />
-              </div>
-
-              <div>
-                <label className="form-label">Role in the Business</label>
-                <input className="form-input" type="text" value={formData.selfEmployment.roleInBusiness} onChange={(e) => setFormData(prev => ({
-                  ...prev,
-                  selfEmployment: {
-                    ...prev.selfEmployment,
-                    roleInBusiness: e.target.value
-                  }
-                }))} />
-              </div>
-
-              <div>
-                <label className="form-label">Approximate Monthly Profit</label>
-                <input className="form-input" type="number" value={formData.selfEmployment.monthlyProfit} onChange={(e) => setFormData(prev => ({
-                  ...prev,
-                  selfEmployment: {
-                    ...prev.selfEmployment,
-                    monthlyProfit: e.target.value
-                  }
-                }))} />
-              </div>
-
-              <div>
-                <label className="form-label">Business Address</label>
-                <input className="form-input" type="text" value={formData.selfEmployment.businessAddress} onChange={(e) => setFormData(prev => ({
-                  ...prev,
-                  selfEmployment: {
-                    ...prev.selfEmployment,
-                    businessAddress: e.target.value
-                  }
-                }))} />
-              </div>
-
-              <div>
-                <label className="form-label">Business Phone Numbers</label>
-                <input className="form-input" type="tel" value={formData.selfEmployment.businessPhone} onChange={(e) => setFormData(prev => ({
-                  ...prev,
-                  selfEmployment: {
-                    ...prev.selfEmployment,
-                    businessPhone: e.target.value
-                  }
-                }))} />
-              </div>
+          <div className="form-group">
+            <label className="form-label">Do you have your own business?</label>
+            <div className="flex-row">
+              <label className="option-label"><input type="radio" name="hasOwnBusiness" value="yes" checked={formData.hasOwnBusiness === 'yes'} onChange={handleInputChange} /> Yes</label>
+              <label className="option-label"><input type="radio" name="hasOwnBusiness" value="no" checked={formData.hasOwnBusiness === 'no'} onChange={handleInputChange} /> No</label>
             </div>
           </div>
+
 
             </fieldset>
           )}
@@ -1029,10 +967,26 @@ function AlumniSurveysPanel() {
             </div>
           </div>
         )}
+        {showSubmittedModal && (
+          <div className="confirm-modal-overlay no-print">
+            <div className="confirm-modal no-print">
+              <p>Survey submitted successfully. Returning to Dashboard...</p>
+              <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '12px' }}>
+                <button type="button" className="submit-button" onClick={() => {
+                  try { if (redirectTimerRef.current) clearTimeout(redirectTimerRef.current); } catch(_){}
+                  setShowSubmittedModal(false);
+                  try { navigate('/Dashboard'); } catch (e) { try { window.location.href = '/Dashboard'; } catch(_){} }
+                }}>OK</button>
+              </div>
+            </div>
+          </div>
+        )}
         {/* request-change modal removed; users now edit directly */}
       </div>
     </div>
   );
 }
+
+  // (moved into component body; no-op here)
 
 export default AlumniSurveysPanel;
