@@ -1,0 +1,1 @@
+﻿[{"id":3,"username":"daves","email":"davelazaga@gmail.com","full_name":"dave  lazaga","program_course":"Bachelor of Technology and Livelihood Education major in Home Economics (BTLED)","image":"http://127.0.0.1:8000/media/alumni_images/553003127_1304210358115109_6241755280561207095_n_vwSo6Do.jpg","y

@@ -1,0 +1,1 @@
+﻿{"username":"claim_test_user","id":3,"user_type":"alumni","first_login":true,"token":"eyJpZCI6MywidXNlcm5hbWUiOiJjbGFpbV90ZXN0X3VzZXIiLCJ1c2VyX3R5cGUiOiJhbHVtbmkifQ:1vHl0w:HkWnYN0o_aJa0Ftz3_vLh7II2uyWcJPf5Ftfl7tQmi4","token_expires_at":1762616886}
