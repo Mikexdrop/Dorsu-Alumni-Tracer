@@ -155,11 +155,10 @@ const Contact = () => {
         }
       `}</style>
   <div ref={cardRef} className="contact-card">
-        <div className="contact-title">Contact</div>
+        <div className="contact-title">Feedback</div>
         <div className="contact-desc">
-          Have questions or need assistance?<br />
-          Reach out to <span style={{ color: '#ffd600', fontWeight: 'bold' }}>Davao Oriental State University</span>.<br />
-          We’re here to help you!
+         Do you have a feedback about the system?<br />
+        
         </div>
         <div className="contact-info" style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
           <div className="contact-grid">
@@ -167,8 +166,8 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="form-inner" aria-label="Contact form">
                 <div className="form-row">
                   <div>
-                    <label className="input-label" htmlFor="name">Full name</label>
-                    <input id="name" className="input-control" name="name" value={form.name} onChange={handleChange} placeholder="Your full name" />
+                    <label className="input-label" htmlFor="name">Name</label>
+                    <input id="name" className="input-control" name="name" value={form.name} onChange={handleChange} placeholder="Your Name" />
                   </div>
                   <div>
                     <label className="input-label" htmlFor="email">Email address</label>
@@ -180,7 +179,7 @@ const Contact = () => {
                   <textarea id="message" className="input-control" name="message" value={form.message} onChange={handleChange} placeholder="How can we help?" />
                 </div>
                 <div className="form-actions">
-                  <button type="submit" className="btn-primary">Send message</button>
+                  <button type="submit" className="btn-primary">Send feedback</button>
                   <div className="status" role="status" aria-live="polite" style={{ color: status?.type === 'error' ? '#ff8a80' : '#b9f6ca' }}>{status?.text}</div>
                 </div>
               </form>
