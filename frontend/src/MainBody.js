@@ -145,7 +145,11 @@ const MainBody = ({ onGetStarted }) => {
     let mounted = true;
     async function fetchPosts() {
       try {
+<<<<<<< HEAD
         const res = await fetch('/api/posts/');
+=======
+        const res = await fetch('api/posts/');
+>>>>>>> aa12f51ca4137d7f95363810643765ab0036949c
         const data = await res.json().catch(() => null);
           if (mounted && data) {
             // data may be a list or an object with results

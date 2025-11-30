@@ -72,7 +72,7 @@ function SignupPanel({ onBack, setSignupStep, setShowLogin }) {
     }
     // Prepare form data for backend
     try {
-  let apiUrl = '/api/' + (form.user_type === 'programhead' ? 'program-heads': 'alumni') + '/';
+  let apiUrl = 'http://127.0.0.1:8000/api/' + (form.user_type === 'programhead' ? 'program-heads' : 'alumni') + '/';
       let payload = {
         username: form.username,
         password: form.password,
