@@ -39,8 +39,9 @@ urlpatterns = [
     # This serves files like /logo_hanap.jpg, /picture_1.jpg, etc.
     re_path(r'^(?P<path>[^/]+\.(jpg|jpeg|png|gif|svg|ico|webp|mp4|webm))$', 
             serve, {'document_root': settings.STATIC_ROOT}),
-    # Serve React app for all other routes
-    path('', TemplateView.as_view(template_name='index.html')),
+    # Catch-all route: serve React app for all other routes (React Router handles client-side routing)
+    # This must be last so it doesn't catch API or admin routes
+    re_path(r'^.*$', TemplateView.as_view(template_name='index.html')),
 ]
 
 if settings.DEBUG:

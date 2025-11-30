@@ -21,8 +21,8 @@ from .views import (
 )
 urlpatterns = [
     path('admins/', AdminListCreateView.as_view(), name='admin-list-create'),
-    path('alumni/', AlumniListCreateView.as_view(), name='alumni-list-create'),
-    path('program-heads/', ProgramHeadListCreateView.as_view(), name='programhead-list-create'),
+    path('alumni/', csrf_exempt(AlumniListCreateView.as_view()), name='alumni-list-create'),
+    path('program-heads/', csrf_exempt(ProgramHeadListCreateView.as_view()), name='programhead-list-create'),
     path('admins/<int:pk>/', AdminDetailView.as_view(), name='admin-detail'),
     path('alumni/<int:pk>/', AlumniDetailView.as_view(), name='alumni-detail'),
     path('alumni/<int:pk>/change_password/', AlumniChangePasswordView.as_view(), name='alumni-change-password'),
